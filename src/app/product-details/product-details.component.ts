@@ -19,11 +19,4 @@ export class ProductDetailsComponent implements OnInit {
 
     this.product = products.find(res => res.id === productIdFromRoute);
   }
-  show(){
-    if(true){console.log('a','a');}else if(false){
-      console.log('ab','ab');
-    }else{
-      
-    }
-  }
 }
