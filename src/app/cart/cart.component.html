@@ -1,12 +1,43 @@
 <p>
-cart works!
+  cart works!
 </p>
 
-<div class="cart-item" *ngFor = "let item of items">
-    <span>{{item.name}}</span>
-     <span>{{item.price | currency}}</span>
+<div class="cart-item" *ngFor="let item of items">
+  <span>{{item.name}}</span>
+  <span>{{item.price | currency}}</span>
 </div>
 
 <div>
-  <a routerLink='/shipping' >Shipping Price</a>
+  <a routerLink="/shipping">Shipping Price</a>
+</div>
+<br />
+<div>
+  <form [formGroup]="formGroup">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" required />
+    </div>
+    <div>
+      <label for="address">Address</label>
+      <input id="address" type="text" formControlName="address" required />
+    </div>
+
+    <div>
+      <button class="button" type="submit" (click)="purchase()" >
+        Purchase
+      </button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="purchaseName">
+  <div>
+    <label>Purchased</label>
+  </div>
+  <div>
+    <span>{{purchaseName}}</span>
+  </div>
+  <div>
+    <span>{{purchaseAddress}}</span>
+  </div>
 </div>
