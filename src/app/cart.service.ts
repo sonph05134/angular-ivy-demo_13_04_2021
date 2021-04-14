@@ -1,19 +1,24 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { AnonymousSubject } from "rxjs/internal/Rx";
 
 @Injectable({ providedIn: "root" })
 export class CartService {
   items = [];
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   addCart(product: any) {
     this.items.push(product);
   }
-  getItem(){
+  getItem() {
     return this.items;
   }
-  clearCart(){
+  clearCart() {
     this.items = [];
     return this.items;
+  }
+  getShippingPrices() {
+    return this.http.get<{ type: string; price: string } []>(
+      "/assets/shipping.json"
+    );
   }
 }
